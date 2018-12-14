@@ -1,20 +1,20 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: netcore.backgroundtask
+  name: #{ImageName}#
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: netcore.backgroundtask 
+      app: #{ImageName}# 
   template:
     metadata:
       labels:
-        app: netcore.backgroundtask
+        app: #{ImageName}#
     spec:
       containers:
-      - name: netcore.backgroundtask
-        image: #{ACR}#/netcore.backgroundtask:#{VersionImage}#
+      - name: #{ImageName}#
+        image: #{ACR}#/#{ImageName}#:#{VersionImage}#
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: #{Environment}#
