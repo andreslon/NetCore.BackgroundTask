@@ -8,6 +8,7 @@ namespace Netcore.BackgroundTask.Infrastructure.Repositories
     {
         public bool Create(Customer entity)
         {
+
             //Created
             return true;
         }

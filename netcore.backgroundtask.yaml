@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: netcore.backgroundtask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netcore.backgroundtask 
+  template:
+    metadata:
+      labels:
+        app: netcore.backgroundtask
+    spec:
+      containers:
+      - name: netcore.backgroundtask
+        image: #{ACR}#/netcore.backgroundtask:#{VersionImage}#
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: #{Environment}#
+        resources:
+          requests:
+            cpu: 250m
+            memory: 300Mi
+          limits:
+            cpu: 250m
+            memory: 300Mi  
