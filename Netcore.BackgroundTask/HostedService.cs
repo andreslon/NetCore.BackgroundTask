@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Netcore.BackgroundTask
-{ 
+{
     internal class HostedService : IHostedService, IDisposable
     {
         private Timer Timer { get; set; }
@@ -25,7 +25,7 @@ namespace Netcore.BackgroundTask
                 TimeSpan.FromSeconds(double.Parse(Configuration["Settings:ExecutionTimeSeconds"])));
 
             return Task.CompletedTask;
-        } 
+        }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
@@ -42,7 +42,7 @@ namespace Netcore.BackgroundTask
 
         private void DoWork(object state)
         {
-            Console.WriteLine("Timed Background Service is working.");
+            Console.WriteLine($"Timed Background Service is working. {DateTime.Now}");
 
             CustomerService.Process();
         }
