@@ -8,3 +8,19 @@ Starter project for using background task that runs on a timer with NetCore 2.2
 - [.NET Core SDK on Linux](https://dotnet.microsoft.com/download/linux-package-manager/rhel/sdk-current)
 
 - [.NET Core 2.2 SDK - macOS x64 Installer (v2.2.101)](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.101-macos-x64-installer)
+
+## Starting
+
+
+This project can be used with **VS Code** or **Visual Studio 2015+**
+
+>You can open the .sln file or execute the next commands with cmd
+
+```bash
+> cd Netcore.BackgroundTask
+> dotnet restore
+> dotnet run
+```
+
+
+
