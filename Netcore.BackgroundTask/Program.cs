@@ -12,19 +12,23 @@ namespace Netcore.BackgroundTask
     public class Program
     {
         public static async Task Main(string[] args)
-        {
-            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var builder = new HostBuilder()
+        { 
+            await BuildHost(args).RunConsoleAsync();
+        }
+
+        public static IHostBuilder BuildHost(string[] args) =>
+                 new HostBuilder()
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
-                    config.AddEnvironmentVariables();
-                    config.AddJsonFile($"appsettings.{environment}.json",
-                        optional: true, reloadOnChange: true);
+                    config.SetBasePath(Environment.CurrentDirectory); 
+                    config.AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true);
+                    config.AddEnvironmentVariables(); 
                     config.AddCommandLine(args);
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<HostedService>();
+
                     #region Core services
                     services.AddScoped<ICustomerService, CustomerService>();
                     #endregion
@@ -33,7 +37,6 @@ namespace Netcore.BackgroundTask
                     services.AddScoped<ICustomerRepository, CustomerRepository>();
                     #endregion
                 });
-            await builder.RunConsoleAsync();
-        }
+
     }
 }
