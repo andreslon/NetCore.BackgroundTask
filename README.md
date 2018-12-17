@@ -14,7 +14,7 @@ Starter project for using background task that runs on a timer with NetCore 2.2
 
 This project can be used with **VS Code** or **Visual Studio 2015+**
 
->You can open the .sln file or execute the next commands with cmd
+>You can open the .sln file or execute the next commands from cmd
 
 ```bash
 > cd Netcore.BackgroundTask
