@@ -21,7 +21,7 @@ namespace Netcore.BackgroundTask
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
                     config.SetBasePath(Environment.CurrentDirectory); 
-                    config.AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true);
+                    config.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true);
                     config.AddEnvironmentVariables(); 
                     config.AddCommandLine(args);
                 })
